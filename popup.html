@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cobalt Canine Downloader</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="top">
+      <div class="brand">
+        <span class="badge">&gt;&gt;</span>
+        <div>
+          <h1>Cobalt Canine</h1>
+          <p class="sub">cobalt.canine.tools</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button id="float-btn" type="button" title="Open mini-window on this page">Mini ⧉</button>
+        <a id="open-site" href="https://cobalt.canine.tools/" target="_blank" rel="noreferrer" title="Open Cobalt">Site ↗</a>
+      </div>
+    </header>
+
+    <div class="input-row">
+      <input id="url-input" type="url" placeholder="https://..." spellcheck="false" autocomplete="off">
+      <button id="paste-btn" type="button" title="Paste from clipboard">Paste</button>
+    </div>
+
+    <div class="modes" role="group" aria-label="Download mode">
+      <button class="mode-btn" data-mode="auto" type="button">Auto</button>
+      <button class="mode-btn" data-mode="audio" type="button">Audio</button>
+      <button class="mode-btn" data-mode="mute" type="button">Mute</button>
+    </div>
+
+    <button id="go-btn" class="primary-btn" type="button">Download with Cobalt</button>
+    <div id="status-box" class="status-box"></div>
+
+    <section id="downloads-sec" class="downloads-sec">
+      <div class="sec-title">Recent downloads</div>
+      <div id="dl-list" class="dl-list"></div>
+    </section>
+
+    <details class="prefs">
+      <summary>Preferences</summary>
+      <label class="toggle">
+        <input id="pref-silent" type="checkbox">
+        <span>Run Cobalt silently (don't switch tab)</span>
+      </label>
+      <label class="toggle">
+        <input id="pref-copy-icon" type="checkbox">
+        <span>Show floating icon next to copied links</span>
+      </label>
+      <label class="toggle">
+        <input id="pref-reuse" type="checkbox">
+        <span>Reuse Cobalt helper tab (faster Turnstile)</span>
+      </label>
+      <label class="toggle">
+        <input id="pref-autoclose" type="checkbox">
+        <span>Auto-close helper tab after download starts</span>
+      </label>
+      <p class="hint">Mac shortcut: <code>Option + Shift + D</code> (<code>⌥ + ⇧ + D</code>) opens the mini downloader on any page. Customize at <code>chrome://extensions/shortcuts</code>.</p>
+    </details>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>

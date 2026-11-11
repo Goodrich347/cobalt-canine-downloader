@@ -1,0 +1,78 @@
+{
+  "manifest_version": 3,
+  "name": "Cobalt Canine Downloader",
+  "version": "2.1.0",
+  "description": "Floating mini-downloader & batch picker for cobalt.canine.tools.",
+  "permissions": [
+    "contextMenus",
+    "activeTab",
+    "storage",
+    "tabs",
+    "downloads",
+    "clipboardRead",
+    "offscreen"
+  ],
+  "host_permissions": [
+    "https://cobalt.canine.tools/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://cobalt.canine.tools/*"
+      ],
+      "js": [
+        "cobalt_tap.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "https://cobalt.canine.tools/*"
+      ],
+      "js": [
+        "cobalt_bridge.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "exclude_matches": [
+        "https://cobalt.canine.tools/*"
+      ],
+      "js": [
+        "page_widget.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Cobalt Canine Downloader",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "commands": {
+    "download-current-tab": {
+      "suggested_key": {
+        "default": "Alt+Shift+D",
+        "mac": "Alt+Shift+D"
+      },
+      "description": "Open floating Cobalt mini-downloader on current page"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
